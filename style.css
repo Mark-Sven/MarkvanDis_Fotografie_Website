@@ -660,15 +660,17 @@ button {
   max-width: 980px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   align-items: center;
   justify-content: center;
   perspective: 1200px;
 }
 
-/* Hero Floral Photo */
+/* Hoofdfoto in de oorspronkelijke beeldverhouding */
 .hero-photo-wrap {
   width: 100%;
-  max-width: 580px;
+  max-width: 100%;
   position: relative;
   border-radius: 3px;
   overflow: hidden;
@@ -687,16 +689,17 @@ button {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  aspect-ratio: auto;
   transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-photo-wrap:hover .hero-photo {
-  transform: scale(1.03);
+  transform: none;
 }
 
 .hero-photo-glow {
+  display: none;
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.18) 0%, transparent 65%);
@@ -704,12 +707,14 @@ button {
   mix-blend-mode: soft-light;
 }
 
-/* Quote Card Overlay met hoogwaardige zweefanimatie */
+/* Quote onder de foto, zodat de volledige compositie zichtbaar blijft */
 .hero-quote-card {
-  position: absolute;
-  top: 48%;
-  right: -3.5%;
-  transform: translateY(-50%);
+  position: relative;
+  top: auto;
+  right: auto;
+  transform: none !important;
+  align-self: flex-end;
+  margin: 0;
   width: 44%;
   min-width: 360px;
   max-width: 440px;
@@ -720,7 +725,7 @@ button {
   padding: 2.8rem 2.8rem 2.2rem 2.8rem;
   border-radius: 3px;
   box-shadow: 0 18px 42px rgba(42, 39, 36, 0.09);
-  animation: heroCardEntrance 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both, heroCardFloat 8s ease-in-out 1.7s infinite alternate;
+  animation: photoFadeIn 0.8s ease both;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
   will-change: transform;
   overflow: hidden;
@@ -847,7 +852,7 @@ button {
   }
   
   .hero-photo-wrap {
-    max-width: 500px;
+    max-width: 100%;
   }
   
   .hero-quote-card {
@@ -891,7 +896,7 @@ button {
     width: calc(100% - 1.5rem);
     min-width: 0;
     max-width: none;
-    margin: -3rem 0 0 auto;
+    margin: 0;
     padding: 2rem 1.75rem 1.5rem;
     animation: photoFadeIn 0.8s ease 0.2s both;
   }
@@ -1015,14 +1020,14 @@ button {
   border-radius: 4px;
   background: var(--quote-bg);
   box-shadow: 0 18px 45px rgba(42, 39, 36, 0.1);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: auto;
 }
 
 .about-story__media img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .about-story__title {
@@ -1129,7 +1134,7 @@ button {
   }
 
   .about-story--reverse .about-story__media { order: initial; }
-  .about-story__media { aspect-ratio: 16 / 10; }
+  .about-story__media { aspect-ratio: auto; }
 }
 
 /* ========================================================================== 
@@ -1202,22 +1207,22 @@ button {
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 18px 45px rgba(42, 39, 36, 0.12);
-  min-height: 450px;
+  min-height: 0;
 }
 
 .story-media img {
   width: 100%;
-  height: 100%;
-  min-height: 450px;
-  object-fit: cover;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
   display: block;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.story-media:hover img { transform: scale(1.03); }
+.story-media:hover img { transform: none; }
 
-.story-media--portrait { min-height: 580px; }
-.story-media--portrait img { min-height: 580px; }
+.story-media--portrait { min-height: 0; }
+.story-media--portrait img { min-height: 0; }
 
 .story-section .btn-contact {
   margin-top: 0.6rem;
@@ -1234,7 +1239,7 @@ button {
   .story-media,
   .story-media img,
   .story-media--portrait,
-  .story-media--portrait img { min-height: 380px; }
+  .story-media--portrait img { min-height: 0; }
 }
 
 /* ==========================================================================
@@ -1286,7 +1291,7 @@ button {
 
 .work-card__thumb-wrap {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
   overflow: hidden;
   background-color: #a38c78;
   display: block;
@@ -1294,14 +1299,14 @@ button {
 
 .work-card__image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
   transition: transform 0.6s var(--transition-smooth);
 }
 
 .work-card:hover .work-card__image {
-  transform: scale(1.03);
+  transform: none;
 }
 
 /* Tekst / link onder de foto (exact conform screenshot) */
@@ -1474,7 +1479,7 @@ button {
   overflow: hidden;
   background: #2b2723;
   cursor: pointer;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
   animation: galleryItemIn 0.5s var(--transition-smooth) both;
@@ -1491,14 +1496,14 @@ button {
 
 .gallery-item__img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
   transition: transform 0.7s var(--transition-smooth);
 }
 
 .gallery-item:hover .gallery-item__img {
-  transform: scale(1.06);
+  transform: none;
 }
 
 .gallery-item__overlay {
@@ -1769,8 +1774,9 @@ button {
 /* Subpagina Galerij Grid */
 .subpage-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
   gap: 2.2rem;
+  align-items: start;
 }
 
 .subpage-card {
@@ -1790,14 +1796,15 @@ button {
 
 .subpage-card__img {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
   display: block;
   transition: transform 0.7s var(--transition-smooth);
 }
 
 .subpage-gallery-grid--awards .subpage-card__img {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: auto;
   object-fit: contain;
   background: #171615;
 }
@@ -1807,7 +1814,7 @@ button {
 }
 
 .subpage-card:hover .subpage-card__img {
-  transform: scale(1.04);
+  transform: none;
 }
 
 .subpage-card__info,
@@ -1843,7 +1850,7 @@ button {
 
 .overview-img-wrap {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: auto;
   overflow: hidden;
   border-radius: 3px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
@@ -1851,14 +1858,15 @@ button {
 }
 
 .overview-img-wrap img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   transition: transform 0.7s var(--transition-smooth);
 }
 
 .overview-img-wrap:hover img {
-  transform: scale(1.04);
+  transform: none;
 }
 
 .overview-text-content h3 {
@@ -1939,15 +1947,15 @@ button {
 .blog-section__img {
   width: 100%;
   height: auto;
-  max-height: 380px;
-  object-fit: cover;
+  max-height: none;
+  object-fit: contain;
   display: block;
   border-radius: 2px;
   transition: transform 0.6s var(--transition-smooth);
 }
 
 .blog-section__media:hover .blog-section__img {
-  transform: scale(1.02);
+  transform: none;
 }
 
 .blog-section__link {

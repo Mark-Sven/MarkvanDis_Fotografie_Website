@@ -92,8 +92,8 @@
               alt="Lachend bruidspaar dat samen de bruidstaart aansnijdt"
               class="hero-photo"
               id="heroPhotoImg"
-              width="580"
-              height="580"
+              width="1600"
+              height="1067"
             />
             <div class="hero-photo-glow" aria-hidden="true"></div>
           </div>
@@ -235,8 +235,8 @@
                   src="images/trouwfoto8.jpg" 
                   alt="Trouwfoto's portfolio Mark van Dis" 
                   class="work-card__image"
-                  width="440"
-                  height="550"
+                  width="1600"
+                  height="1067"
                 />
               </a>
               <div class="work-card__caption">
@@ -251,8 +251,8 @@
                   src="images/prijswinnendefoto2.jpg" 
                   alt="Prijswinnende foto's Mark van Dis" 
                   class="work-card__image"
-                  width="440"
-                  height="550"
+                  width="1600"
+                  height="1066"
                 />
               </a>
               <div class="work-card__caption">
@@ -267,8 +267,8 @@
                   src="images/persoonlijkefavorieten4.jpg" 
                   alt="Persoonlijke favorieten en mooiste foto's Mark van Dis" 
                   class="work-card__image"
-                  width="440"
-                  height="550"
+                  width="1600"
+                  height="1067"
                 />
               </a>
               <div class="work-card__caption">
@@ -645,74 +645,6 @@
         // ==========================================
         // Vloeiende interactieve Hero & About animaties
         // ==========================================
-        const heroSection = document.getElementById('hero');
-        const heroComp = document.getElementById('heroComposition');
-        const quoteCard = document.getElementById('heroQuoteCard');
-        const photoWrap = document.getElementById('heroPhotoWrap');
-        const aboutSection = document.getElementById('even-voorstellen');
-
-        // Scroll Parallax met soepele animatie
-        let scrolled = 0;
-        let mouseX = 0;
-        let mouseY = 0;
-        let currentMouseX = 0;
-        let currentMouseY = 0;
-        let isHoveringHero = false;
-
-        window.addEventListener('scroll', () => {
-          scrolled = window.pageYOffset || document.documentElement.scrollTop;
-          if (window.innerWidth > 860 && heroSection) {
-            const heroHeight = heroSection.offsetHeight;
-            if (scrolled < heroHeight + 200) {
-              const movePhoto = scrolled * 0.05;
-              const moveQuote = scrolled * 0.08;
-              photoWrap.style.transform = isHoveringHero 
-                ? `perspective(1000px) rotateY(${currentMouseX * 5}deg) rotateX(${-currentMouseY * 5}deg) translateY(${movePhoto}px)`
-                : `translateY(${movePhoto}px)`;
-              quoteCard.style.transform = isHoveringHero
-                ? `perspective(1000px) rotateY(${currentMouseX * 8}deg) rotateX(${-currentMouseY * 8}deg) translateY(calc(-50% - ${moveQuote}px))`
-                : `translateY(calc(-50% - ${moveQuote}px))`;
-            }
-          }
-        }, { passive: true });
-
-        // Interactieve 3D Tilt op de Hero bij muisbeweging (desktop)
-        if (heroComp && window.innerWidth > 860) {
-          heroComp.addEventListener('mouseenter', () => {
-            isHoveringHero = true;
-          });
-
-          heroComp.addEventListener('mousemove', (e) => {
-            const rect = heroComp.getBoundingClientRect();
-            mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-            mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-          });
-
-          heroComp.addEventListener('mouseleave', () => {
-            isHoveringHero = false;
-            mouseX = 0;
-            mouseY = 0;
-            const movePhoto = scrolled * 0.05;
-            const moveQuote = scrolled * 0.08;
-            photoWrap.style.transform = `translateY(${movePhoto}px)`;
-            quoteCard.style.transform = `translateY(calc(-50% - ${moveQuote}px))`;
-          });
-
-          // Zachte lerp interpolatie voor natuurlijke beweging
-          function animateHeroTilt() {
-            if (isHoveringHero) {
-              currentMouseX += (mouseX - currentMouseX) * 0.08;
-              currentMouseY += (mouseY - currentMouseY) * 0.08;
-              const movePhoto = scrolled * 0.05;
-              const moveQuote = scrolled * 0.08;
-              photoWrap.style.transform = `perspective(1000px) rotateY(${currentMouseX * 6}deg) rotateX(${-currentMouseY * 6}deg) translateY(${movePhoto}px)`;
-              quoteCard.style.transform = `perspective(1000px) rotateY(${currentMouseX * 9}deg) rotateX(${-currentMouseY * 9}deg) translateY(calc(-50% - ${moveQuote}px))`;
-            }
-            requestAnimationFrame(animateHeroTilt);
-          }
-          animateHeroTilt();
-        }
-
         // IntersectionObserver voor overige inhoud & getrapte onthullingen
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
