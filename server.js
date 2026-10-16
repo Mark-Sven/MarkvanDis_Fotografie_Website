@@ -59,7 +59,7 @@ app.post('/api/contact', async (req, res) => {
     if (!voornaam || !achternaam || !email || !bericht || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({
         success: false,
-        error: 'Vul uw voornaam, achternaam, een geldig e-mailadres en bericht in.',
+        error: 'Vul je voornaam, achternaam, een geldig e-mailadres en je bericht in.',
       });
     }
 
@@ -71,7 +71,7 @@ app.post('/api/contact', async (req, res) => {
     if (!smtpHost || !smtpUser || !smtpPass || !Number.isInteger(smtpPort) || smtpPort < 1 || smtpPort > 65535) {
       return res.status(503).json({
         success: false,
-        error: 'Het contactformulier is tijdelijk niet beschikbaar. Stuur uw bericht rechtstreeks naar contact@markvandis.nl.',
+        error: 'Het contactformulier is tijdelijk niet beschikbaar. Stuur je bericht rechtstreeks naar contact@markvandis.nl.',
       });
     }
 
@@ -149,7 +149,7 @@ app.post('/api/contact', async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: 'Uw bericht is verzonden. Mark neemt zo snel mogelijk contact met u op.',
+      message: 'Je bericht is verzonden. Mark neemt zo snel mogelijk contact met je op.',
     });
   } catch (error) {
     console.error('Fout bij versturen contactmail:', error.code || error.name || 'Onbekende SMTP-fout');

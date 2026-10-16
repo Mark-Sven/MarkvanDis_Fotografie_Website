@@ -11,7 +11,7 @@
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Contactformulier | Mark van Dis Trouwfotografie" />
-    <meta property="og:description" content="Heeft u vragen of interesse in een trouwreportage? Laat uw gegevens achter of neem direct contact op met Mark van Dis." />
+    <meta property="og:description" content="Heb je vragen of interesse in een trouwreportage? Laat je gegevens achter of neem direct contact op met Mark van Dis." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="images/mark-flowers.jpg" />
 
@@ -104,7 +104,7 @@
             <h1 class="contact-form-headline">Contactformulier</h1>
             
             <p class="contact-form-p1">
-              Heeft u vragen, interesse of iets anders waarbij ik u kan helpen? Laat uw gegevens achter! Ik zal u dan zo snel mogelijk mailen 😉!
+              Heb je vragen, ben je geïnteresseerd of kan ik je ergens anders mee helpen? Laat je gegevens achter! Ik mail je dan zo snel mogelijk 😉
             </p>
             
             <p class="contact-form-p2">
@@ -177,10 +177,10 @@
                 />
               </div>
 
-              <!-- Veld 4: Waar ik u mee kan helpen (vereist) -->
+              <!-- Veld 4: Waar ik je mee kan helpen (vereist) -->
               <div class="form-field">
                 <label for="bericht" class="form-sublabel">
-                  Waar ik u mee kan helpen <span class="sublabel-required">(vereist)</span>
+                  Waar ik je mee kan helpen <span class="sublabel-required">(vereist)</span>
                 </label>
                 <textarea 
                   id="bericht" 
@@ -284,7 +284,7 @@
               </div>
 
               <div class="contact-kvk">
-                KvK-Nummer: 84968915
+                KvK-nummer: 84968915
               </div>
             </div>
 
@@ -330,7 +330,7 @@
 
           <h3>3. Reservering en Betaling</h3>
           <p>3.1 Een boeking is pas definitief na ondertekening van de offerte en betaling van de aanbetaling.</p>
-          <p>3.2 De volledige kosten van de fotografieopdracht dienen uiterlijk één week voor de bruiloft volledig te zijn betaald.</p>
+          <p>3.2 De kosten van de fotografieopdracht dienen uiterlijk één week voor de bruiloft volledig te zijn betaald.</p>
           <p>3.3 Indien de betaling niet tijdig is voldaan, behoudt de fotograaf zich het recht voor om de opdracht te annuleren.</p>
 
           <h3>4. Leveringstermijnen</h3>
@@ -464,7 +464,7 @@
 
             if (!voornaam || !achternaam || !email || !bericht) {
               formFeedback.className = 'form-feedback-msg is-error';
-              formFeedback.textContent = 'Vul alstublieft alle vereiste velden in.';
+              formFeedback.textContent = 'Vul alle verplichte velden in.';
               return;
             }
 
@@ -503,7 +503,7 @@
               formFeedback.innerHTML = `
                 Er ging iets mis bij het automatisch verzenden. <br />
                 <a href="mailto:contact@markvandis.nl?subject=Aanvraag%20via%20website&body=Naam:%20${encodeURIComponent(voornaam + ' ' + achternaam)}%0D%0ABericht:%20${encodeURIComponent(bericht)}" class="form-fallback-mail-btn">
-                  Klik hier om uw bericht direct via uw mailprogramma te versturen naar contact@markvandis.nl
+                  Klik hier om je bericht direct via je mailprogramma te versturen naar contact@markvandis.nl
                 </a>
               `;
             } finally {
